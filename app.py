@@ -6,6 +6,16 @@ import matplotlib.pyplot as plt
 # Constants
 GRAVITY = 10  # gravity constant (m/s^2)
 
+# Display a centered title image using HTML and CSS styling
+st.markdown(
+    """
+    <div style="display: flex; justify-content: center;">
+        <img src="https://path_to_your_image/title_image.jpg" alt="Title Image" width="70%">
+    </div>
+    """,
+    unsafe_allow_html=True
+)
+
 # Title and introduction
 st.title("Nerf Gun Muzzle Velocity and Spring Constant Calculator")
 st.write("""
