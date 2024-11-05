@@ -24,12 +24,12 @@ starting and ending heights, and dart mass. Given these parameters, it calculate
 and plots the trajectory.
 """)
 
-# User inputs
-range_distance = st.number_input("Enter the horizontal range (m):", min_value=0.1, step=0.1)
-starting_height = st.number_input("Enter the starting height (m):", min_value=0.1, step=0.1)
-ending_height = st.number_input("Enter the ending height (m):", min_value=0.1, step=0.1)
-muzzle_length = st.number_input("Enter the muzzle length (spring compression) (m):", min_value=0.01, step=0.01)
-dart_mass = st.number_input("Enter the mass of the dart (kg):", min_value=0.001, step=0.001)
+# User inputs with preferred starting values
+range_distance = st.number_input("Enter the horizontal range (m):", min_value=0.1, step=0.1, value=30.0)
+starting_height = st.number_input("Enter the starting height (m):", min_value=0.1, step=0.1, value=2.0)
+ending_height = st.number_input("Enter the ending height (m):", min_value=0.1, step=0.1, value=1.0)
+muzzle_length = st.number_input("Enter the muzzle length (spring compression) (m):", min_value=0.01, step=0.01, value=0.15)
+dart_mass = st.number_input("Enter the mass of the dart (kg):", min_value=0.001, step=0.001, value=0.01)
 
 # Calculate the difference in height
 height_difference = starting_height - ending_height
