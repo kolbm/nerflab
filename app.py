@@ -10,7 +10,7 @@ GRAVITY = 10  # gravity constant (m/s^2)
 st.markdown(
     """
     <div style="display: flex; justify-content: center;">
-        <img src="https://github.com/kolbm/nerflab/blob/main/nerflab.jpg?raw=true" alt="Title Image" width="70%">
+        <img src="https://github.com/kolbm/nerflab/blob/main/nerflab.jpg?raw=true" alt="Title Image" width="90%">
     </div>
     """,
     unsafe_allow_html=True
