@@ -20,16 +20,19 @@ st.markdown(
 st.title("Nerf Gun Muzzle Velocity and Spring Constant Calculator")
 st.write("""
 This app simulates the firing of a Nerf gun based on parameters such as range, muzzle length (spring compression), 
-difference in height, and dart mass. Given these parameters, it calculates the muzzle velocity, spring constant, 
+starting and ending heights, and dart mass. Given these parameters, it calculates the muzzle velocity, spring constant, 
 and plots the trajectory.
 """)
 
 # User inputs
 range_distance = st.number_input("Enter the horizontal range (m):", min_value=0.1, step=0.1)
-height_difference = st.number_input("Enter the difference in height (m):", min_value=-5.0, step=0.1,
-                                    help="Enter a positive value if the impact point is below the launch point.")
+starting_height = st.number_input("Enter the starting height (m):", min_value=0.1, step=0.1)
+ending_height = st.number_input("Enter the ending height (m):", min_value=0.1, step=0.1)
 muzzle_length = st.number_input("Enter the muzzle length (spring compression) (m):", min_value=0.01, step=0.01)
 dart_mass = st.number_input("Enter the mass of the dart (kg):", min_value=0.001, step=0.001)
+
+# Calculate the difference in height
+height_difference = starting_height - ending_height
 
 if st.button("Calculate"):
     # Calculate time of flight based on vertical distance
@@ -51,7 +54,7 @@ if st.button("Calculate"):
     
     # Calculate x and y positions over time
     x_values = muzzle_velocity * time_values
-    y_values = height_difference + (0.5 * GRAVITY * time_values ** 2)
+    y_values = starting_height - (0.5 * GRAVITY * time_values ** 2)
     
     # Create a DataFrame for the trajectory points
     trajectory_data = pd.DataFrame({
@@ -68,7 +71,7 @@ if st.button("Calculate"):
     ax.set_title("Trajectory of the Nerf Dart")
     ax.legend()
     ax.grid(True)
-    ax.set_ylim(0, max(height_difference, np.max(y_values)) + 0.5)
+    ax.set_ylim(0, max(starting_height, np.max(y_values)) + 0.5)
     
     # Show the plot in Streamlit
     st.pyplot(fig)
